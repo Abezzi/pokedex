@@ -15,7 +15,9 @@
     // allows the ES module syntax
     "esModuleInterop": true,
     // skip type checking all declaration files
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    // only include ./node_modules/@types/node
+    "types": ["node"],
   },
   // specifies the files to include in the compilation
   "include": ["./src/**/*.ts"],
