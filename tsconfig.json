@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // deprecated
+    // "baseUrl": ".",
+    "target": "esnext",
+    "module": "nodenext",
+    // where typescript are located
+    "rootDir": "./src",
+    // compiled js goes to
+    "outDir": "./dist",
+    // enables all strict type checking options
+    "strict": true,
+    // specifies how modules are resolved
+    "moduleResolution": "nodenext",
+    // allows the ES module syntax
+    "esModuleInterop": true,
+    // skip type checking all declaration files
+    "skipLibCheck": true
+  },
+  // specifies the files to include in the compilation
+  "include": ["./src/**/*.ts"],
+  // specifies the files to exclude from the compilation
+  "exclude": ["node_modules"]
+}
