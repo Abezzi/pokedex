@@ -1,4 +1,5 @@
 import * as readline from "readline";
+import { getCommands } from "./commands/index.js";
 
 /**
  * cleans the input by removing leading and trailing white spaces, converts to lowercase, splits on one or more whitespaces characters, and removes empty strings
@@ -14,6 +15,8 @@ export function cleanInput(input: string): string[] {
 }
 
 export function startREPL(): void {
+  const commands = getCommands();
+
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -21,6 +24,7 @@ export function startREPL(): void {
   });
 
   // display initial prompt
+  console.log("Welcome to the Pokedex! Type 'help' for available commands.\n");
   rl.prompt();
 
   rl.on("line", (input: string) => {
@@ -31,15 +35,31 @@ export function startREPL(): void {
       return;
     }
 
-    // print first word in the required format
-    console.log(`Your command was: ${words[0]}`);
+    const commandName = words[0].toLowerCase();
+    const command = commands[commandName];
+
+    if (command) {
+      try {
+        command.callback(commands);
+      } catch (error) {
+        console.error("Error executing command:", error);
+      }
+    } else {
+      console.log(`Unknown command: ${commandName}`);
+    }
 
     rl.prompt();
   });
 
-  // handle close (CTRL+C)
+  // handle user pressing (CTRL+C) to close
   rl.on("close", () => {
-    console.log("\nGoodbye! 👋")
-    process.exit(0);
+    const exitCommand = commands["exit"];
+
+    if (exitCommand) {
+      exitCommand.callback(commands);
+    } else {
+      console.log("\nGoodbye! 👋")
+      process.exit(0);
+    }
   });
 }
