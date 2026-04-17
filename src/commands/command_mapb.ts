@@ -1,6 +1,6 @@
 import { type State } from "../state.js";
 
-export async function commandMapb(state: State, _line: string): Promise<void> {
+export async function commandMapb(state: State): Promise<void> {
   try {
     if (!state.prevLocationsURL) {
       console.log("You're on the first page.");
