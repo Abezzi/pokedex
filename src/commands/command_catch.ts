@@ -17,7 +17,9 @@ export async function commandCatch(state: State, ...args: string[]): Promise<voi
     const scapeRate = Math.random() * 100;
 
     if (scapeRate < catchRate) {
-      state.pokedex[pokemonName] = pokemon;   // store in pokedex
+      // store in pokedex
+      state.pokedex[pokemon.name] = pokemon;
+
       console.log(`${pokemonName} was caught!`);
       console.log(`Added to your Pokédex!`);
     } else {
