@@ -1,5 +1,24 @@
 import { Cache } from "./pokecache.js";
 
+export type Pokemon = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  base_experience: number;
+  stats: Array<{
+    base_stat: number;
+    stat: {
+      name: string;
+    };
+  }>;
+  types: Array<{
+    type: {
+      name: string;
+    };
+  }>;
+}
+
 export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";
   private cache: Cache;
@@ -56,11 +75,36 @@ export class PokeAPI {
     return data;
   }
 
+  async fetchPokemon(pokemonName: string): Promise<Pokemon> {
+    const normalizedName = pokemonName.toLocaleLowerCase().trim();
+    const url = `${PokeAPI.baseURL}/pokemon/${normalizedName}`;
+
+    const cached = this.cache.get<Pokemon>(url);
+    if (cached) {
+      console.log(`[CACHE HIT] ${url}`)
+      return cached;
+    }
+
+    console.log(`[CACHE MISS] Fetching ${url}`)
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch pokemon: ${response.statusText}`);
+    }
+
+    const data: Pokemon = await response.json();
+    this.cache.add(url, data);
+
+    return data;
+  }
+
   // clean up on exit
   stopCache(): void {
     this.cache.stopReapLoop();
   }
+
 }
+
 
 export type ShallowLocations = {
   count: number;
