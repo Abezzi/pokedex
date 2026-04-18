@@ -1,16 +1,16 @@
-# Pokedex CLI
+# Pokédex CLI
 
 A fully functional **Pokémon Command-Line Interface** built with TypeScript and Node.js. 
-This interactive terminal application lets you explore the Pokémon world using real data from the [PokeAPI](https://pokeapi.co/), catch Pokémon, build your own Pokédex, and inspect their stats — all from the comfort of your terminal.
+This interactive terminal application lets you explore the Pokémon world using real data from the [PokeAPI](https://pokeapi.co/), catch Pokémon, build your own Pokédex, and inspect their stats, all from the comfort of your terminal.
 Built as a learning project to practice async programming, API integration, caching, pagination, and TypeScript.
 
 ### Features
 
-- **Interactive REPL** with a clean green prompt
+- **Interactive REPL** - with a clean green prompt
 - **Smart caching system** – subsequent requests are blazing fast 🔥
-- **Pagination support** for exploring the world
-- **Real Pokémon data** powered by PokeAPI
-- **Catch mechanics** based on base experience (the harder the Pokémon, the lower the catch rate)
+- **Pagination support** - for exploring the world
+- **Real Pokémon data** - powered by PokeAPI
+- **Catch mechanics** - based on base experience (the harder the Pokémon, the lower the catch rate)
 - **Persistent Pokédex** – keep track of all Pokémon you've caught during the session
 
 ### Available Commands
@@ -37,8 +37,6 @@ Pokedex > pokedex
 ```
 
 ### Techonologies Used
-
-Technologies Used
 
 - TypeScript
 - Node.js + Readline
