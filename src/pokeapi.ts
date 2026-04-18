@@ -105,11 +105,11 @@ export class PokeAPI {
 
     const cached = this.cache.get<Pokemon>(url);
     if (cached) {
-      console.log(`[CACHE HIT] ${url}`)
+      // console.log(`[CACHE HIT] ${url}`)
       return cached;
     }
 
-    console.log(`[CACHE MISS] Fetching ${url}`)
+    // console.log(`[CACHE MISS] Fetching ${url}`)
 
     const response = await fetch(url);
     if (!response.ok) {
