@@ -14,6 +14,7 @@ export type State = {
   rl: Interface;
   commands: Record<string, CLICommand>;
   pokedex: Record<string, Pokemon>;
+  party: Record<string, Pokemon[]>;
 };
 
 export function initState(): State {
@@ -31,5 +32,5 @@ export function initState(): State {
 
   const commands = getCommands();
 
-  return { pokeAPI, nextLocationsURL, prevLocationsURL, rl, commands, pokedex: {} };
+  return { pokeAPI, nextLocationsURL, prevLocationsURL, rl, commands, pokedex: {}, party: {} };
 }
