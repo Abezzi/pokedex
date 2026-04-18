@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { commandExplore } from '../src/commands/command_explore.js';
 import type { State } from '../src/state.js';
+import { Location } from '../src/pokeapi.js';
 
 // mock console
 const mockLog = vi.spyOn(console, 'log').mockImplementation(() => { });
@@ -19,7 +20,7 @@ describe('commandExplore', () => {
 
     mockState = {
       pokeAPI: {
-        fetchLocation: vi.fn(),
+        fetchLocation: mockFetchLocation,
       } as any,
     } as State;
   });
@@ -37,19 +38,21 @@ describe('commandExplore', () => {
 
   // test 2: valid location with Pokémon
   it('should successfully explore a valid location and display sorted unique Pokémon', async () => {
-    const mockData = {
+    const mockData: Location = {
+      id: 123,
+      name: "eterna-city-area",
       pokemon_encounters: [
-        { pokemon: { name: 'barboach' } },
-        { pokemon: { name: 'golduck' } },
-        { pokemon: { name: 'gyarados' } },
-        { pokemon: { name: 'magikarp' } },
-        { pokemon: { name: 'psyduck' } },
-        { pokemon: { name: 'whiscash' } },
+        { pokemon: { name: 'barboach', url: "https://pokeapi.co/api/v2/pokemon/barboach" } },
+        { pokemon: { name: 'golduck', url: "https://pokeapi.co/api/v2/pokemon/golduck" } },
+        { pokemon: { name: 'gyarados', url: "https://pokeapi.co/api/v2/pokemon/gyarados" } },
+        { pokemon: { name: 'magikarp', url: "https://pokeapi.co/api/v2/pokemon/magikarp" } },
+        { pokemon: { name: 'psyduck', url: "https://pokeapi.co/api/v2/pokemon/psyduck" } },
+        { pokemon: { name: 'whiscash', url: "https://pokeapi.co/api/v2/pokemon/whiscash" } },
       ],
     };
 
     // this is the key: properly mock the function
-    (mockState.pokeAPI.fetchLocation as any).mockResolvedValue(mockData);
+    mockFetchLocation.mockResolvedValue(mockData)
 
     await commandExplore(mockState, 'eterna-city-area');
 
@@ -75,7 +78,7 @@ describe('commandExplore', () => {
   it('should show error message when location does not exist', async () => {
     // simulate API error (e.g. 404 Not Found)
     const fakeError = new Error('Failed to fetch location: Not Found');
-    (mockState.pokeAPI.fetchLocation as any).mockRejectedValue(fakeError);
+    mockFetchLocation.mockRejectedValue(fakeError)
 
     await commandExplore(mockState, 'talca');
 
