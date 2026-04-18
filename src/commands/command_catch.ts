@@ -20,10 +20,10 @@ export async function commandCatch(state: State, ...args: string[]): Promise<voi
       // store in pokedex
       state.pokedex[pokemon.name] = pokemon;
 
-      console.log(`${pokemon.name} was caught!`);
+      console.log(`${pokemon.name} was caught! ✋😮🤚`);
       console.log(`Added to your Pokedex! you can inspect it using: inspect ${pokemon.name}`);
     } else {
-      console.log(`${pokemon.name} escaped!`);
+      console.log(`${pokemon.name} escaped! ᯓ🏃🏻‍♀️‍➡️`);
     }
   } catch (err) {
     console.error(`Error: Could not find Pokemon "${pokemonName}"`);
