@@ -15,16 +15,18 @@ Built as a learning project to practice async programming, API integration, cach
 
 ### Available Commands
 
-| Command              | Description                                      | Usage                          |
-|----------------------|--------------------------------------------------|--------------------------------|
-| `help`               | Show all available commands                      | `help`                         |
-| `map`                | Show next 20 location areas                      | `map`                          |
-| `mapb`               | Go back to previous 20 locations                 | `mapb`                         |
-| `explore <area>`     | Explore a location and list Pokémon that live there | `explore eterna-city-area`    |
-| `catch <pokemon>`    | Try to catch a Pokémon (chance based on stats)   | `catch pikachu`                |
-| `inspect <pokemon>`  | View detailed stats of a caught Pokémon          | `inspect pidgey`               |
-| `pokedex`            | Display all Pokémon you've caught                | `pokedex`                      |
-| `exit`               | Exit the application                             | `exit`                         |
+| Command              | Description                                      | Usage                                         |
+|----------------------|--------------------------------------------------|-----------------------------------------------|
+| `help`               | Show all available commands                      | `help`                                        |
+| `map`                | Show next 20 location areas                      | `map`                                         |
+| `mapb`               | Go back to previous 20 locations                 | `mapb`                                        |
+| `explore <area>`     | Explore a location and list Pokémon that live there | `explore eterna-city-area`                 |
+| `catch <pokemon>`    | Try to catch a Pokémon (chance based on stats)   | `catch <pokemon>`                             |
+| `inspect <pokemon>`  | View detailed stats of a caught Pokémon          | `inspect <pokemon>`                           |
+| `pokedex`            | Display all Pokémon you've caught                | `pokedex`                                     |
+| `party`              | Make a party with 3 of your caught Pokemon.      | `party <pokemon1> <pokemon2> <pokemon3>`      |
+| `battle`             | Battle a wild Pokemon using yours. Usage         | `battle <my-pokemon> <enemy-pokemon>`         |
+| `exit`               | Exit the application                             | `exit`                                        |
 
 ### Example Usage
 
