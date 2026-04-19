@@ -12,13 +12,29 @@ import { commandPokedex } from "./command_pokedex.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
+    battle: {
+      description: "Battle a wild Pokemon using yours. Usage: battle <my-pokemon> <enemy-pokemon>",
+      callback: commandBattle,
+    },
+    catch: {
+      description: "Attempt to catch a Pokemon. Usage: catch <pokemon-name>",
+      callback: commandCatch,
+    },
     exit: {
       description: "Exits the pokedex",
       callback: commandExit,
     },
+    explore: {
+      description: "Explore a location area and list the Pokemon that live there. Usage: explore <location-name>",
+      callback: commandExplore,
+    },
     help: {
       description: "Displays a help message",
       callback: commandHelp,
+    },
+    inspect: {
+      description: "Inspects a caught pokemon and show its details. Usage: inspect <pokemon-name>",
+      callback: commandInspect,
     },
     map: {
       description: "Displays the next 20 location areas in Pokemon world",
@@ -28,29 +44,13 @@ export function getCommands(): Record<string, CLICommand> {
       description: "Displays the previous 20 location areas",
       callback: commandMapb,
     },
-    explore: {
-      description: "Explore a location area and list the Pokemon that live there. Usage: explore <location-name>",
-      callback: commandExplore,
-    },
-    catch: {
-      description: "Attempt to catch a Pokemon. Usage: catch <pokemon-name>",
-      callback: commandCatch,
-    },
-    inspect: {
-      description: "Inspects a caught pokemon and show its details. Usage: inspect <pokemon-name>",
-      callback: commandInspect,
+    party: {
+      description: "Make a party with 3 of your caught Pokemon. Usage: party <pokemon-name-1> <pokemon-name-2> <pokemon-name-3>",
+      callback: commandParty,
     },
     pokedex: {
       description: "List all Pokemon you have caught",
       callback: commandPokedex,
-    },
-    battle: {
-      description: "Battle a wild Pokemon using yours. Usage: battle <my-pokemon> <enemy-pokemon>",
-      callback: commandBattle,
-    },
-    party: {
-      description: "Make a party with 3 of your caught Pokemon. Usage: party <pokemon-name-1> <pokemon-name-2> <pokemon-name-3>",
-      callback: commandParty,
     },
   };
 }
