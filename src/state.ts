@@ -1,6 +1,7 @@
 import { createInterface, type Interface } from "readline";
 import { getCommands } from "./commands/index.js";
 import { PokeAPI, Pokemon } from "./pokeapi.js";
+import { loadProgress } from "./storage.js";
 
 export type CLICommand = {
   description: string;
@@ -17,7 +18,7 @@ export type State = {
   party: Record<string, Pokemon[]>;
 };
 
-export function initState(): State {
+export async function initState(): Promise<State> {
   const pokeAPI = new PokeAPI();
   const nextLocationsURL: null = null;
   const prevLocationsURL: null = null;
@@ -32,5 +33,24 @@ export function initState(): State {
 
   const commands = getCommands();
 
-  return { pokeAPI, nextLocationsURL, prevLocationsURL, rl, commands, pokedex: {}, party: {} };
+  // load saved progress
+  const saved = await loadProgress();
+  const pokedex: Record<string, Pokemon> = saved?.pokedex || {};
+  const party: Record<string, Pokemon[]> = saved?.party || {};
+
+  const state: State = {
+    pokeAPI,
+    nextLocationsURL,
+    prevLocationsURL,
+    rl,
+    commands,
+    pokedex,
+    party,
+  };
+
+  if (Object.keys(pokedex).length > 0) {
+    console.log(`💾 Loaded ${Object.keys(pokedex).length} Pokémon from save file!`);
+  }
+
+  return state;
 }
