@@ -17,8 +17,17 @@ export type Pokemon = {
       name: string;
     };
   }>;
+  abilities: Array<{
+    ability: {
+      name: string;
+    }
+  }>;
+  moves: Array<{
+    move: {
+      name: string;
+    }
+  }>
 }
-
 
 export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";

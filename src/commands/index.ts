@@ -45,7 +45,7 @@ export function getCommands(): Record<string, CLICommand> {
       callback: commandPokedex,
     },
     battle: {
-      description: "Battle a wild Pokemon using yours. Usage: battle <pokemon-name>",
+      description: "Battle a wild Pokemon using yours. Usage: battle <my-pokemon> <enemy-pokemon>",
       callback: commandBattle,
     },
     party: {
