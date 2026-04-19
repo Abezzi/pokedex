@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { commandExplore } from '../src/commands/command_explore.js';
-import type { State } from '../src/state.js';
-import { Location } from '../src/pokeapi.js';
+import { commandExplore } from '../../src/commands/command_explore.js';
+import type { State } from '../../src/state.js';
+import { Location } from '../../src/pokeapi.js';
 
 // mock console
 const mockLog = vi.spyOn(console, 'log').mockImplementation(() => { });

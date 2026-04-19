@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { commandParty } from '../src/commands/command_party.js';
-import type { State } from '../src/state.js';
-import type { Pokemon } from '../src/pokeapi.js';
+import { commandParty } from '../../src/commands/command_party.js';
+import type { State } from '../../src/state.js';
+import type { Pokemon } from '../../src/pokeapi.js';
 
 // Mock console
 const mockLog = vi.spyOn(console, 'log').mockImplementation(() => { });
@@ -20,7 +20,7 @@ describe('commandParty', () => {
     } as State;
   });
 
-  // test 1: No arguments / list when empty
+  // test 1: no arguments / list when empty
   it('should show usage and help message when no arguments are given', async () => {
     await commandParty(mockState);
 
