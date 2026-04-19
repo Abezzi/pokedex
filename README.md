@@ -11,6 +11,7 @@ Built as a learning project to practice async programming, API integration, cach
 - **Pagination support** - for exploring the world
 - **Real Pokémon data** - powered by PokeAPI
 - **Catch mechanics** - based on base experience (the harder the Pokémon, the lower the catch rate)
+- **Battle Simulation** - simulate battles between two Pokemon in a intense turn-based fight
 - **Persistent Pokédex** – keep track of all Pokémon you've caught during the session
 
 ### Available Commands
