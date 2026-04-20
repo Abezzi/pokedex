@@ -7,7 +7,7 @@ import { Location } from '../../src/pokeapi.js';
 const mockLog = vi.spyOn(console, 'log').mockImplementation(() => { });
 const mockError = vi.spyOn(console, 'error').mockImplementation(() => { });
 
-describe('commandExplore', () => {
+describe('commandCheck', () => {
   let mockState: State;
   let mockFetchLocation: ReturnType<typeof vi.fn>;
 
@@ -56,7 +56,7 @@ describe('commandExplore', () => {
 
     await commandCheck(mockState, 'eterna-city-area');
 
-    expect(mockLog).toHaveBeenCalledWith('Checking eterna-city-area...');
+    expect(mockLog).toHaveBeenCalledWith('🔎 Checking eterna-city-area...');
     expect(mockLog).toHaveBeenCalledWith('Found Pokemon:');
 
     // match exactly what you see when running manually
@@ -82,7 +82,7 @@ describe('commandExplore', () => {
 
     await commandCheck(mockState, 'talca');
 
-    expect(mockLog).toHaveBeenCalledWith('Checking talca...');
+    expect(mockLog).toHaveBeenCalledWith('🔎 Checking talca...');
 
     expect(mockError).toHaveBeenCalledWith(
       'Error checking talca: Failed to fetch location: Not Found'
