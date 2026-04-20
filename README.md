@@ -13,21 +13,25 @@ Built as a learning project to practice async programming, API integration, cach
 - **Catch mechanics** - based on base experience (the harder the Pokémon, the lower the catch rate)
 - **Battle Simulation** - simulate battles between two Pokemon in a intense turn-based fight
 - **Persistent Pokédex** – keep track of all Pokémon you've caught during the session
+- **Inventory System** – Use your coins to buy items and use them in your journey
 
 ### Available Commands
 
-| Command              | Description                                      | Usage                                         |
-|----------------------|--------------------------------------------------|-----------------------------------------------|
-| `help`               | Show all available commands                      | `help`                                        |
-| `map`                | Show next 20 location areas                      | `map`                                         |
-| `mapb`               | Go back to previous 20 locations                 | `mapb`                                        |
-| `explore <area>`     | Explore a location and list Pokémon that live there | `explore eterna-city-area`                 |
-| `catch <pokemon>`    | Try to catch a Pokémon (chance based on stats)   | `catch <pokemon>`                             |
-| `inspect <pokemon>`  | View detailed stats of a caught Pokémon          | `inspect <pokemon>`                           |
-| `pokedex`            | Display all Pokémon you've caught                | `pokedex`                                     |
-| `party`              | Make a party with 3 of your caught Pokemon.      | `party <pokemon1> <pokemon2> <pokemon3>`      |
-| `battle`             | Battle a wild Pokemon using yours. Usage         | `battle <my-pokemon> <enemy-pokemon>`         |
-| `exit`               | Exit the application                             | `exit`                                        |
+| Command              | Description                                       | Usage                                         |
+|----------------------|---------------------------------------------------|-----------------------------------------------|
+| `battle`             | Battle a wild Pokemon using yours.                | `battle <my-pokemon> <enemy-pokemon>`         |
+| `buy`                | Buy items to aid you in your journey.             | `buy`         |
+| `catch <pokemon>`    | Try to catch a Pokémon (chance based on stats)    | `catch <pokemon>`                             |
+| `check <area>`       | Check a location and list Pokémon that live there | `check eterna-city-area`                 |
+| `exit`               | Exit the application and saves the progress       | `exit`                                        |
+| `explore`            | Explore the Pokemon World by choosing from numbered locations. | `explore`                 |
+| `evolve`             | Evolve a Pokemon using a Evolution Stone.         | `evolve <pokemon>`                 |
+| `help`               | Show all available commands                       | `help`                                        |
+| `inspect <pokemon>`  | View detailed stats of a caught Pokémon           | `inspect <pokemon>`                           |
+| `map`                | Show next 20 location areas                       | `map`                                         |
+| `mapb`               | Go back to previous 20 locations                  | `mapb`                                        |
+| `party`              | Make a party with 3 of your caught Pokemon.       | `party <pokemon1> <pokemon2> <pokemon3>`      |
+| `pokedex`            | Display all Pokémon you've caught                 | `pokedex`                                     |
 
 ### Example Usage
 
