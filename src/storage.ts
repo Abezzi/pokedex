@@ -6,11 +6,13 @@ const SAVE_FILE = path.join(process.cwd(), 'save.json');
 export type SavedData = {
   pokedex: Record<string, any>;
   party: Record<string, any[]>;
+  items: Record<string, number>;
+  coins: number;
 };
 
-export async function saveProgress(pokedex: Record<string, any>, party: Record<string, any[]>): Promise<void> {
+export async function saveProgress(pokedex: Record<string, any>, party: Record<string, any[]>, coins: number, items: Record<string, number>): Promise<void> {
   try {
-    const data: SavedData = { pokedex, party };
+    const data: SavedData = { pokedex, party, coins, items };
     await fs.writeFile(SAVE_FILE, JSON.stringify(data, null, 2), 'utf-8');
     console.log("💾 Progress saved successfully!");
   } catch (error) {

@@ -10,12 +10,17 @@ import { commandMapb } from "./command_mapb.js";
 import { commandParty } from "./command_party.js";
 import { commandPokedex } from "./command_pokedex.js";
 import { commandExplore } from "./command_explore.js";
+import { commandBuy } from "./command_buy.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
     battle: {
       description: "Battle a wild Pokemon using yours. Usage: battle <my-pokemon> <enemy-pokemon>",
       callback: commandBattle,
+    },
+    buy: {
+      description: "Buy items to aid you in your journey.",
+      callback: commandBuy,
     },
     catch: {
       description: "Attempt to catch a Pokemon. Usage: catch <pokemon-name>",

@@ -5,7 +5,7 @@ export async function commandExit(state: State): Promise<void> {
   console.log("Saving your progress...");
 
   try {
-    await saveProgress(state.pokedex, state.party);
+    await saveProgress(state.pokedex, state.party, state.coins, state.items);
   } catch (error) {
   }
 

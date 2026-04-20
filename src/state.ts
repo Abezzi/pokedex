@@ -16,6 +16,8 @@ export type State = {
   commands: Record<string, CLICommand>;
   pokedex: Record<string, Pokemon>;
   party: Record<string, Pokemon[]>;
+  coins: number;
+  items: Record<string, number>;
 };
 
 export async function initState(): Promise<State> {
@@ -37,6 +39,8 @@ export async function initState(): Promise<State> {
   const saved = await loadProgress();
   const pokedex: Record<string, Pokemon> = saved?.pokedex || {};
   const party: Record<string, Pokemon[]> = saved?.party || {};
+  const coins: number = saved?.coins || 2000;
+  const items: Record<string, number> = saved?.items || {};
 
   const state: State = {
     pokeAPI,
@@ -46,6 +50,8 @@ export async function initState(): Promise<State> {
     commands,
     pokedex,
     party,
+    coins,
+    items,
   };
 
   if (Object.keys(pokedex).length > 0) {

@@ -7,7 +7,7 @@ async function main() {
 
   // save progress when the user press CTRL+C
   const saveOnExit = async () => {
-    await saveProgress(state.pokedex, state.party);
+    await saveProgress(state.pokedex, state.party, state.coins, state.items);
     process.exit();
   }
 
