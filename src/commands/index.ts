@@ -2,13 +2,14 @@ import { CLICommand } from "../state.js";
 import { commandBattle } from "./command_battle.js";
 import { commandCatch } from "./command_catch.js";
 import { commandExit } from "./command_exit.js";
-import { commandExplore } from "./command_explore.js";
+import { commandCheck } from "./command_check.js";
 import { commandHelp } from "./command_help.js";
 import { commandInspect } from "./command_inspect.js";
 import { commandMap } from "./command_map.js";
 import { commandMapb } from "./command_mapb.js";
 import { commandParty } from "./command_party.js";
 import { commandPokedex } from "./command_pokedex.js";
+import { commandExplore } from "./command_explore.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
@@ -20,12 +21,16 @@ export function getCommands(): Record<string, CLICommand> {
       description: "Attempt to catch a Pokemon. Usage: catch <pokemon-name>",
       callback: commandCatch,
     },
+    check: {
+      description: "Check a specific location area. Usage: check <location-name>",
+      callback: commandCheck,
+    },
     exit: {
       description: "Exits the pokedex",
       callback: commandExit,
     },
     explore: {
-      description: "Explore a location area and list the Pokemon that live there. Usage: explore <location-name>",
+      description: "Explore the Pokemon World by choosing from numbered locations.",
       callback: commandExplore,
     },
     help: {

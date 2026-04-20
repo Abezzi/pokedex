@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { commandExplore } from '../../src/commands/command_explore.js';
+import { commandCheck } from '../../src/commands/command_check.js';
 import type { State } from '../../src/state.js';
 import { Location } from '../../src/pokeapi.js';
 
@@ -27,10 +27,10 @@ describe('commandExplore', () => {
 
   // test 1: no arguments provided
   it('should show usage message when no location name is given', async () => {
-    await commandExplore(mockState);
+    await commandCheck(mockState);
 
-    expect(mockLog).toHaveBeenCalledWith("Usage: explore <location-area-name>");
-    expect(mockLog).toHaveBeenCalledWith("Example: explore pastoria-city-area");
+    expect(mockLog).toHaveBeenCalledWith("Usage: check <location-area-name>");
+    expect(mockLog).toHaveBeenCalledWith("Example: check pastoria-city-area");
 
     // should NOT call the API
     expect(mockState.pokeAPI.fetchLocation).not.toHaveBeenCalled();
@@ -54,9 +54,9 @@ describe('commandExplore', () => {
     // this is the key: properly mock the function
     mockFetchLocation.mockResolvedValue(mockData)
 
-    await commandExplore(mockState, 'eterna-city-area');
+    await commandCheck(mockState, 'eterna-city-area');
 
-    expect(mockLog).toHaveBeenCalledWith('Exploring eterna-city-area...');
+    expect(mockLog).toHaveBeenCalledWith('Checking eterna-city-area...');
     expect(mockLog).toHaveBeenCalledWith('Found Pokemon:');
 
     // match exactly what you see when running manually
@@ -80,12 +80,12 @@ describe('commandExplore', () => {
     const fakeError = new Error('Failed to fetch location: Not Found');
     mockFetchLocation.mockRejectedValue(fakeError)
 
-    await commandExplore(mockState, 'talca');
+    await commandCheck(mockState, 'talca');
 
-    expect(mockLog).toHaveBeenCalledWith('Exploring talca...');
+    expect(mockLog).toHaveBeenCalledWith('Checking talca...');
 
     expect(mockError).toHaveBeenCalledWith(
-      'Error exploring talca: Failed to fetch location: Not Found'
+      'Error checking talca: Failed to fetch location: Not Found'
     );
 
     expect(mockLog).toHaveBeenCalledWith(
