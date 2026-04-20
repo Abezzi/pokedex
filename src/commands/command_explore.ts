@@ -19,7 +19,7 @@ export async function commandExplore(state: State, ...args: string[]): Promise<v
   while (true) {
     console.log(`🗺️ You are currently at: **${currentLocation.name}**\n`);
 
-    // Show Pokémon in current area using your existing "check" command
+    // show Pokémon in current area using your existing "check" command
     console.log("Checking the area...\n");
     await state.commands.check.callback(state, currentLocation.slug);
 
@@ -50,14 +50,14 @@ export async function commandExplore(state: State, ...args: string[]): Promise<v
         continue;
       }
       console.log(`\nYou head back to ${previousLocation.name}...`);
-      // Swap current and previous
+      // swap current and previous
       const temp = currentLocation;
       currentLocation = previousLocation;
       previousLocation = temp;
       continue;
     }
 
-    // For left, right, forward → move to a random new location
+    // for left, right, forward -> move to a random new location
     if (["left", "right", "forward"].includes(action)) {
       previousLocation = currentLocation;
       currentLocation = getRandomLocation();
@@ -100,7 +100,7 @@ function getRandomLocation(): LocationNode {
   return POSSIBLE_LOCATIONS[randomIndex];
 }
 
-// Helper to get user input
+// helper to get user input
 function getUserChoice(rl: any): Promise<string> {
   return new Promise((resolve) => {
     rl.question("> ", (answer: string) => {
