@@ -10,7 +10,7 @@ const STARTING_LOCATION: LocationNode = {
   slug: "eterna-forest-area"
 };
 
-export async function commandExplore(state: State, ...args: string[]): Promise<void> {
+export async function commandExplore(state: State): Promise<void> {
   let currentLocation: LocationNode = STARTING_LOCATION;
   let previousLocation: LocationNode | null = null;
 
