@@ -27,6 +27,10 @@ export type Pokemon = {
       name: string;
     }
   }>
+  species: {
+    name: string;
+    url: string;
+  }
 }
 
 export class PokeAPI {
@@ -129,6 +133,46 @@ export class PokeAPI {
     this.cache.add(url, data);
 
     return data;
+  }
+
+  async getNextEvolution(pokemonName: string): Promise<string | null> {
+    try {
+      // 1. Fetch the Pokémon to get species URL
+      const pokemon = await this.fetchPokemon(pokemonName);
+
+      if (!pokemon.species?.url) return null;
+
+      // 2. Fetch species data
+      const speciesRes = await fetch(pokemon.species.url);
+      const species = await speciesRes.json();
+
+      if (!species.evolution_chain?.url) return null;
+
+      // 3. Fetch evolution chain
+      const chainRes = await fetch(species.evolution_chain.url);
+      const chainData = await chainRes.json();
+
+      // 4. Traverse the chain to find next evolution
+      let current = chainData.chain;
+
+      while (current) {
+        if (current.species.name === pokemonName) {
+          // Found current Pokémon → return next evolution if exists
+          if (current.evolves_to && current.evolves_to.length > 0) {
+            return current.evolves_to[0].species.name;
+          }
+          return null; // No further evolution
+        }
+
+        // Move to next in chain (most chains are linear)
+        current = current.evolves_to?.[0] || null;
+      }
+
+      return null;
+    } catch (error) {
+      console.error("Error fetching evolution chain:", error);
+      return null;
+    }
   }
 
   // clean up on exit

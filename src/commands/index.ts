@@ -11,6 +11,7 @@ import { commandParty } from "./command_party.js";
 import { commandPokedex } from "./command_pokedex.js";
 import { commandExplore } from "./command_explore.js";
 import { commandBuy } from "./command_buy.js";
+import { commandEvolve } from "./command_evolve.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
@@ -37,6 +38,10 @@ export function getCommands(): Record<string, CLICommand> {
     explore: {
       description: "Explore the Pokemon World by choosing from numbered locations.",
       callback: commandExplore,
+    },
+    evolve: {
+      description: "Evolve a Pokemon using a Evolution Stone. Usage: evolve <pokemon>",
+      callback: commandEvolve,
     },
     help: {
       description: "Displays a help message",
