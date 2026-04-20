@@ -7,7 +7,7 @@ type ShopItem = {
 };
 
 const SHOP_ITEMS: ShopItem[] = [
-  { name: "pokeball", displayName: "PokéBall", price: 200 },
+  { name: "pokeball", displayName: "Pokeball", price: 200 },
   { name: "greatball", displayName: "Great Ball", price: 600 },
   { name: "ultraball", displayName: "Ultra Ball", price: 1200 },
   { name: "evolution-stone", displayName: "Evolution Stone", price: 1000 },
