@@ -4,6 +4,10 @@ A fully functional **Pokémon Command-Line Interface** built with TypeScript and
 This interactive terminal application lets you explore the Pokémon world using real data from the [PokeAPI](https://pokeapi.co/), catch Pokémon, build your own Pokédex, and inspect their stats, all from the comfort of your terminal.
 Built as a learning project to practice async programming, API integration, caching, pagination, and TypeScript.
 
+### Demo video
+
+- Check out the Demo [here](https://youtu.be/vW7CmRLKIM8)
+
 ### Features
 
 - **Interactive REPL** - with a clean green prompt
@@ -32,7 +36,6 @@ Built as a learning project to practice async programming, API integration, cach
 | `mapb`               | Go back to previous 20 locations                  | `mapb`                                        |
 | `party`              | Make a party with 3 of your caught Pokemon.       | `party <pokemon1> <pokemon2> <pokemon3>`      |
 | `pokedex`            | Display all Pokémon you've caught                 | `pokedex`                                     |
-
 ### Example Usage
 
 ```bash
